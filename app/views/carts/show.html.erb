@@ -6,8 +6,9 @@
 
   <% if enhanced_cart.length == 0 %>
 
-    <div class="alert alert-danger" role="alert">Cart is empty</div>
+    <div class="alert alert-danger" role="alert">Your cart is empty</div>
 
+    <%= link_to 'Back to Home', :root, class:"btn btn-primary" %>
   <% else %>
 
     <div class="panel panel-default items">
