@@ -1,8 +1,35 @@
 <section class="orders-show">
 
+  <%= @order.inspect %>
+  <%= @line_items.inspect%>
+  
+
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
   </header>
+
+ <div class="container">
+  <h2>Striped Rows</h2>
+  <p>The .table-striped class adds zebra-stripes to a table:</p>            
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @line_items.each do |item| %>
+      <tr>
+        <td><%=item.product_id%></td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>

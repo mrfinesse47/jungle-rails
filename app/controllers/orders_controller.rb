@@ -2,6 +2,30 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @line_items = LineItem.where("order_id = #{params[:id]}")
+
+    @display_items = []
+
+    # need image , name, description, price, quantity,item totals,
+    
+    @line_items.each do |item|
+
+      @product = Product.find(item.product_id)
+      img = @product[:image]
+      # description = @product[:description]
+    
+
+      @display_items.push(
+        {name:@product[:name],image:img,
+        description:@product[:description],
+        price_each: item.item_price_cents,
+        total_price: item.total_price_cents,
+        quantity:item.quantity}
+      )
+    end
+
+    puts "###########################\n\n"
+    puts @display_items
   end
 
   def create
@@ -18,6 +42,7 @@ class OrdersController < ApplicationController
   rescue Stripe::CardError => e
     redirect_to cart_path, flash: { error: e.message }
   end
+
 
   private
 

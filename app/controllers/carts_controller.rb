@@ -1,8 +1,6 @@
 class CartsController < ApplicationController
 
   def show
-    puts "here!!!!"
-    params.inspect
   end
 
   def add_item
