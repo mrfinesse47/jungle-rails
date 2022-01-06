@@ -30,7 +30,16 @@
       </tr>
     <% end %>
     </tbody>
+    <tfoot>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>Total Price:</th>
+      <th><%=humanized_money_with_symbol @order.total_cents/100%></th>
+    </tr>
+    </tfoot>
   </table>
+
 </div>
 
   <div class="order-summary jumbotron">
