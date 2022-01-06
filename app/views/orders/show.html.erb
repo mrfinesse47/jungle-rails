@@ -1,4 +1,6 @@
 <section class="orders-show">
+<%=@order.inspect%>
+<%=@order.line_items.product.inspect%>
 
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
