@@ -35,7 +35,6 @@ RSpec.describe Product, type: :model do
 
     it "should be invalid when category is not provided" do
       subject.category_id = nil
-      puts subject.inspect
       expect(subject).to be_invalid
       expect(subject.errors.full_messages).to include "Category can't be blank"
     end

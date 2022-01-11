@@ -2,10 +2,15 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-
-  
-
   describe 'Validations' do
+
+    before do
+      @user0 = User.new({"first_name"=>"Kevin", "last_name"=>"Mason", "email"=>"ttttttttt1t@y.com", "password"=>"1234567", "password_confirmation"=>"1234567"})
+    end
+
+    it "must be valid" do
+      expect(@user0).to be_valid
+    end
 
     before do
       @user1 = User.new({"first_name"=>"Kevin", "last_name"=>"Mason", "email"=>"tttttt1t@y.com", "password"=>"12345", "password_confirmation"=>"123456"})
@@ -40,13 +45,46 @@ RSpec.describe User, type: :model do
       @user4 = User.new({"first_name"=>"Kevin", "last_name"=>"Mason", "email"=>"TEST@test.com", "password"=>"12345", "password_confirmation"=>"12345"})
     end
 
-    it "must be invalid when email matches existing email in database" do
+    it "must be invalid when email matches existing email in database (case insensitive)" do
       expect(@user4).to be_invalid
       expect(@user4.errors.full_messages).to include "Email has already been taken"
     end
 
+    before do
+      @user5 = User.new({"first_name"=>"Kevin", "last_name"=>"Mason", "email"=>"", "password"=>"12345", "password_confirmation"=>"12345"})
+    end
+
+    it "must be invalid when email is not given" do
+      expect(@user5).to be_invalid
+      expect(@user5.errors.full_messages).to include "Email can't be blank"
+    end
+
+    before do
+      @user6 = User.new({"first_name"=>"Kevin", "last_name"=>"Mason", "email"=>"hello@yes.com", "password"=>"1", "password_confirmation"=>"1"})
+    end
+
+    it "must have a minimum password length of 5" do
+      expect(@user6).to be_invalid
+      expect(@user6.errors.full_messages).to include "Password is too short (minimum is 5 characters)"
+    end
+
   end
 
+  describe '.authenticate_with_credentials tests' do
+    # create the user of example@example.com | password:12345
+    before do
+      @example_user = User.new({"first_name"=>"Kevin", "last_name"=>"Mason", "email"=>"example1@example.com", "password"=>"1234567", "password_confirmation"=>"1234567"})
+      @example_user.save
+    end
+    
+    it "must not be falsy when successfully authenticated, and have first name Kevin, and last name Mason" do
+      user = User.authenticate_with_credentials("example1@example.com","1234567")
+      #because it normally returns false if it does not authenticate
+      expect(user).not_to be_falsy
+      expect(user).to have_attributes(:first_name => "Kevin", :last_name  => "Mason")
+    end
+
+  end
 
 end
 
