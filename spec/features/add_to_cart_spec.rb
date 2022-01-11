@@ -24,9 +24,20 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
     
     scenario "The add to cart button should be visible" do
       visit root_path
-      puts page.html
       expect(page).to have_button("Add", visible: true)
 
+    end
+
+
+    scenario "there should be 0 items in the cart at first" do
+      visit root_path
+      expect(page).to have_content "My Cart (0)"
+    end
+
+    scenario "Should be able to click on Add and have it add to your cart, the cart shoul read: My Cart (1)" do
+      visit root_path
+      click_on 'Add'
+      expect(page).to have_content "My Cart (1)"
     end
 
   
