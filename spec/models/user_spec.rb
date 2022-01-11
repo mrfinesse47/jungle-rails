@@ -91,6 +91,14 @@ RSpec.describe User, type: :model do
       expect(user).to have_attributes(:first_name => "Kevin", :last_name  => "Mason")
     end
 
+
+    it "must allow the user to log in with mIs-cAsEd eMail" do
+      user = User.authenticate_with_credentials("       EXaMpLe1@eXample.Com","1234567")
+      #because it normally returns false if it does not authenticate
+      expect(user).not_to be_falsy
+      expect(user).to have_attributes(:first_name => "Kevin", :last_name  => "Mason")
+    end
+
   end
 
 end
