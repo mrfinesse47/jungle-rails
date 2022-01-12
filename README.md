@@ -2,6 +2,11 @@
 
 A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
 
+## Features
+
+### 1.The Main Layout, for Wednesday.
+!["The Main Layout"](https://github.com/mrfinesse47/scheduler/blob/master/docs/1.png?raw=true)
+
 ## Additional Steps for Apple M1 Machines
 
 1. Make sure that you are runnning Ruby 2.6.6 (`ruby -v`)
