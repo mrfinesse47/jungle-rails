@@ -4,8 +4,8 @@ A mini e-commerce application built with Rails 4.2 for purposes of teaching Rail
 
 ## Features
 
-### 1.The Main Layout, for Wednesday.
-!["The Main Layout"](https://github.com/mrfinesse47/scheduler/blob/master/docs/1.png?raw=true)
+### 1.The Main Layout, for the Jungle App.
+!["The Main Layout"](https://github.com/mrfinesse47/jungle-rails/blob/master/docs/1.png)
 
 ## Additional Steps for Apple M1 Machines
 
