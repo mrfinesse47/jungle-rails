@@ -7,6 +7,9 @@ A mini e-commerce application built with Rails 4.2 for purposes of teaching Rail
 ### 1.The Main Layout, for the Jungle App.
 !["The Main Layout"](https://github.com/mrfinesse47/jungle-rails/blob/master/docs/1.png)
 
+### 2. A product expanded view once a user selects details.
+!["product expanded view"](https://github.com/mrfinesse47/jungle-rails/blob/master/docs/2.png)
+
 ## Additional Steps for Apple M1 Machines
 
 1. Make sure that you are runnning Ruby 2.6.6 (`ruby -v`)
